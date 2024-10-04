@@ -1,0 +1,21 @@
+Required Functionality
+    Login
+        Student
+            View Available Equipment
+            View Current Equipment Checked out
+            Request Equipment Checkout   
+            Report Checkout
+        Dunleavy
+            View All equipment 
+                sort by: checked out, available, etc
+            View All students
+                sort by: has equipment checked out
+            View Student summary
+            View Reciept of all actions
+            Add / Remove Equipment
+            Add / Remove Student
+    Notify
+        Late 
+        Due Soon 
+        Approved / Denied
+    Downloadable app 
