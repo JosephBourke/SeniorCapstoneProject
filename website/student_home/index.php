@@ -10,8 +10,7 @@
 			float: left;
 		}
 
-		h2,
-		ul {
+		h2, ul {
 			text-align: center;
 		}
 	</style>
@@ -35,12 +34,17 @@
 	</div>
 	<div class="side" id="checkedout">
 		<h2>Checked Out Equipment</h2>
-		<ul>
-			<li><a href="view_request_details/index.html">Camera 5</a></li>
-			<?php
-			
+		<?php
+		if (isset($equipment)) {
 			?>
-		</ul>
+			<table>
+				<tr><th>Equipment</th><td><a href="view_request_details/index.html"><?php echo $equipment; ?></a></td></tr>
+				<tr><th>Status</th><td>Pending</td></tr>
+				<tr></tr>
+			</table>
+			<?php
+		}
+		?>
 	</div>
 </body>
 
