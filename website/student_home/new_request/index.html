@@ -5,8 +5,27 @@
         <title>New Request</title>
     </head>
     <body>
+        <h1>New Request</h1>
         <form action="../index.php" method="post">
-
+            <label>
+                Equipment:
+                <select name="equipment" id="equipment">
+                    <option value="camera1">Camera 1</option>
+                    <option value="camera1">Camera 2</option>
+                    <option value="camera1">Camera 3</option>
+                    <option value="camera1">Camera 4</option>
+                </select>
+            </label>
+            <label>
+                Pickup Date:
+                <input type="text" name="pickupDate" id="pickupDate">
+            </label>
+            <label>
+                Return Date:
+                <input type="text" name="returnDate" id="returnDate">
+            </label>
+            <input type="hidden" name="user" id="user">
+            <input type="submit" value="Submit">
         </form>
     </body>
 </html>
