@@ -78,4 +78,3 @@ if ($stmt = $con->prepare($query)) {
 	</div>
 </body>
 
-</html>
