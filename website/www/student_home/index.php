@@ -13,6 +13,25 @@
 		h2, ul {
 			text-align: center;
 		}
+
+		table,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+		table.center {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+		body {
+            background:rgb(244, 243, 243);
+            font-family: "Roboto", sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    
 	</style>
 </head>
 
@@ -25,12 +44,12 @@
 	?>
 	<div class="side" id="available">
 		<h2>Available Equipment</h2>
-		<ul>
-			<li><a href="new_request/index.php">Camera 1</a></li>
-			<li><a href="new_request/index.php">Camera 2</a></li>
-			<li><a href="new_request/index.php">Camera 3</a></li>
-			<li><a href="new_request/index.php">Camera 4</a></li>
-		</ul>
+		<table style="width:80%" class="center">
+			<tr><td><a href="new_request/index.php">Camera 1</a></td></tr>
+			<tr><td><a href="new_request/index.php">Camera 2</a></td></tr>
+			<tr><td><a href="new_request/index.php">Camera 3</a></td></tr>
+			<tr><td><a href="new_request/index.php">Camera 4</a></td></tr>
+		</table>
 	</div>
 	<div class="side" id="checkedout">
 		<h2>Checked Out Equipment</h2>
