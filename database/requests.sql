@@ -1,5 +1,5 @@
 CREATE VIEW `requests` AS
-select id, requestdate, request_permission_id, isapproved
+select id, create_time, description, accepted, user_id, equipment_id
 from request
 order by id;
 
