@@ -111,7 +111,7 @@
     <div class="Request Equipment">
         <div class="form">
             <h1>New Request</h1>
-            <form action="../index.php" method="POST">
+            <form action="../" method="POST">
                 <label>
                     Equipment:
                     <select name="equipment" id="equipment">
@@ -146,26 +146,23 @@
                     <input type="date" name="pickupDate" id="pickupDate">
                 </label>
                 <label>
-                    Return Date:
-                    <input type="date" name="returnDate" id="returnDate">
+                    Comments:
+                    <input type="text" name="returnDate" id="returnDate">
                 </label>
                 <input type="hidden" name="user" id="user" value="Student1">
-                <!-- <input type="submit" value="Submit"> -->
-                <button>Submit</button>
+                <input type="submit" value="Submit">
+                <!-- <button>Submit</button> -->
             </form>
             <?php
 
+            // if (isset($_POST["equipment"])) {
+            //     $query = "INSERT INTO request(id,create_time,description,accepted,user_id,equipment_id)VALUES( " . $id . "," . $create_time . "," . $description . "," . $accepted . "," . $user_id . "," . $equipment_id . ");";
 
-            if (isset($_POST["equipment"])) {
-                $query = "INSERT INTO request(id,create_time,description,accepted,user_id,equipment_id)VALUES( " . $id . "," . $create_time . "," . $description . "," . $accepted . "," . $user_id . "," . $equipment_id . ");";
-
-                if ($stmt = $con->prepare($query)) {
-                    $stmt->execute();
-                    $stmt->close();
-                }
-            }
-
-
+            //     if ($stmt = $con->prepare($query)) {
+            //         $stmt->execute();
+            //         $stmt->close();
+            //     }
+            // }
 
             ?>
             <table>
