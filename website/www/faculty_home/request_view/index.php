@@ -1,4 +1,11 @@
+<!DOCTYPE html>
+<html><body>
+<center>
+<header>Request List</header>
+</center>
+
 <table>
+
 <?php
 $host="127.0.0.1";
 $port=3306;
@@ -8,17 +15,52 @@ $password="P@ssw0rd";
 $dbname="mydb";
 $con = new mysqli($host, $user, $password, $dbname, $port, $socket)
     or die ('Could not connect to the database server' . mysqli_connect_error());
-$query = "SELECT id, create_time, description, accepted, user_id, equipment_id FROM request";
+
+
+
+    if(isset($_POST["accept"]))
+    {
+        $id = $_POST["rid"];
+        $accept = $_POST["accept"];
+        
+        if ($accept == 1) {
+            //update request set accepted=1 where id=$id
+            $query = "UPDATE request SET accepted=1 WHERE id=$id";
+        }else {
+            $query = "UPDATE request SET accepted=0 WHERE id=$id";
+        }
+        
+        
+        if ($stmt = $con->prepare($query)) {
+            $stmt->execute();
+        }    
+    }
+    
+
+
+
+
+
+
+    $query = "Select q.name, r.id, r.description from equipment q, request r where q.id = r.equipment_id AND r.accepted IS NULL";
+
 
 if ($stmt = $con->prepare($query)) {
     $stmt->execute();
-    $stmt->bind_result($id, $create_time, $description, $accepted, $user_id, $equipment_id);
+    $stmt->bind_result($name, $id, $description);
     while ($stmt->fetch()) {
-        //printf("%s, %s, %s, %s, %s, %s\n", $id, $create_time, $description, $accepted, $user_id, $equipment_id);
-        echo "<tr><td>".$id."</td><td>". $create_time."</td><td>". $description."</td><td>". $accepted."</td><td>". $user_id."</td><td>". $equipment_id."</td></tr>";
+        //printf("%s, %s, %s\n", $name, $id, $description);
+        echo "<tr><form action=\"./approve_deny_request/\" method=\"POST\"><td>".$name."</td><td>". $description."</td><td><input value=View type=submit></td><input type=hidden name=id id=id value=$id></form></tr>";
     }
     $stmt->close();
 }
-$con->close();
+
+
+
+
 ?>
+
+
 </table>
+
+
