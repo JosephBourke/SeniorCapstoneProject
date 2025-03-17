@@ -74,10 +74,10 @@
 		<table>
 			<tr>
 				<th>Equipment</th>
-				<td><a href="view_request_details/index.html"><?php echo $equipment; ?></a></td>
 				<th>Status</th>
 			</tr>
 			<tr>
+				<td><a href="view_request_details/index.html"><?php echo $equipment; ?></a></td>
 				<td>Pending</td>
 			</tr>
 			<tr></tr>
@@ -99,12 +99,12 @@ $user_id = 1234567;
 $date = date('YmdHis');
 $description = $_POST["returnDate"];
 
-// $host = "127.0.0.1";
-// $port = 3306;
-// $socket = "";
-// $user = "faculty";
-// $password = "P@ssw0rd";
-// $dbname = "mydb";
+$host = "127.0.0.1";
+$port = 3306;
+$socket = "";
+$user = "faculty";
+$password = "P@ssw0rd";
+$dbname = "mydb";
 
 $con = new mysqli($host, $user, $password, $dbname, $port, $socket) or die('Could not connect to the database server' . mysqli_connect_error());
 
