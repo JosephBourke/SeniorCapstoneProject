@@ -1,12 +1,16 @@
+<!DOCTYPE html>
+
+<html>
+
 
 <center>
-	
+
 	<div class="search-wrapper">
 		<form>
-		<input type="text" name="focus" required class="search-box" placeholder="Search for Equipment" />
+			<input type="text" name="focus" required class="search-box" placeholder="Search for Equipment" />
 			<button class="close-icon" type="reset">Check-In</button>
 		</form>
-	
+
 		<ul>
 			<li>Camera A</li>
 			<li>Camera B</li>
@@ -28,8 +32,12 @@
 			<li>Camera R</li>
 			<li>Camera S</li>
 			<li>Camera T</li>
-	
+
 		</ul>
 	</div>
 
 
+
+
+
+</html>

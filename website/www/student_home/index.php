@@ -48,9 +48,10 @@
 	$dbname = "mydb";
 	?>
 	<div class="side" id="available">
-		<h2>Available Equipment</h2>
+		<h2>Available Equipment</h2> 
 		<table style="width:80%" class="center"><tr>
 		<?php
+		// this is currently actually equipment that is not available
 		$con = new mysqli($host, $user, $password, $dbname, $port, $socket)
 			or die('Could not connect to the database server' . mysqli_connect_error());
 		
