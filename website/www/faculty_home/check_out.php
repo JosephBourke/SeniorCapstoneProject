@@ -34,9 +34,11 @@
         }
 
         if (isset($studentID) && isset($equipmentID) && isset($duedate)) {
-            $date = date("YmdHis");
-            $statement = $conn->prepare("INSERT INTO checkout (checkouttime, duedate, equipment_id, user_id) VALUES ($date, $duedate, $equipmentID, $studnetID)");
-            $statement->execute();
+            $date = date("y-m-d H:i:s");
+            $result = mysql_query("INSERT INTO checkout (checkoutdate, duedate " . date("H:i:s") . ", equipment_id, user_id) VALUES ($date, $duedate, $equipmentID, $studentID);");
+            if ($result) {
+                echo "<script>alert(\"Submission was successful.\");</script>";
+            }
         }
         ?>
     </body>
