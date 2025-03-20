@@ -25,16 +25,17 @@
         $servername = "192.168.56.101";
         $username = "faculty";
         $password = "P@ssw0rd";
+        $db = "mydb";
 
-        $conn = new mysqli($servername, $username, $password);
+        $conn = new mysqli($servername, $username, $password, $db);
 
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
 
         if (isset($studentID) && isset($equipmentID) && isset($duedate)) {
-            $statement = $conn->prepare("INSERT INTO checkout (checkouttime, duedate, equipment_id, user_id) VALUES ((?), $duedate, $equipmentID, $studnetID)");
-            $statement->bind_param('i', getdate());
+            $date = date("YmdHis");
+            $statement = $conn->prepare("INSERT INTO checkout (checkouttime, duedate, equipment_id, user_id) VALUES ($date, $duedate, $equipmentID, $studnetID)");
             $statement->execute();
         }
         ?>
