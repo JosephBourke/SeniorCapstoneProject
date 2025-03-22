@@ -111,7 +111,7 @@
     <div class="Request Equipment">
         <div class="form">
             <h1>New Request</h1>
-            <form action="../" method="POST">
+            <form action="./" method="POST">
                 <label>
                     Equipment:
                     <select name="equipment" id="equipment">
@@ -125,8 +125,11 @@
                         $dbname = "mydb";
                         $con = new mysqli($host, $user, $password, $dbname, $port, $socket)
                             or die('Could not connect to the database server' . mysqli_connect_error());
-                        //$con->close();
-                        $query = "SELECT id, name, description FROM equipment";
+                        
+
+                        /// WARNING this is some of the most cursed scrambled 
+
+                        $query = "SELECT id, name, description FROM equipment;";
                         if ($stmt = $con->prepare($query)) {
                             $stmt->execute();
                             $stmt->bind_result($id, $name, $description);
@@ -137,6 +140,9 @@
                             }
                             $stmt->close();
                         }
+                        
+                        
+                        $con->close();
                         ?>
                     </select>
                 </label>
@@ -155,15 +161,35 @@
             </form>
             <?php
 
-            // if (isset($_POST["equipment"])) {
-            //     $query = "INSERT INTO request(id,create_time,description,accepted,user_id,equipment_id)VALUES( " . $id . "," . $create_time . "," . $description . "," . $accepted . "," . $user_id . "," . $equipment_id . ");";
+$host = "127.0.0.1";
+$port = 3306;
+$socket = "";
+$user = "faculty";
+$password = "P@ssw0rd";
+$dbname = "mydb";
+$con = new mysqli($host, $user, $password, $dbname, $port, $socket)
+    or die('Could not connect to the database server' . mysqli_connect_error());
 
-            //     if ($stmt = $con->prepare($query)) {
-            //         $stmt->execute();
-            //         $stmt->close();
-            //     }
-            // }
 
+if (isset($_POST["equipment"])) {
+
+
+	$equipment_id = $_POST["equipment"];
+	$user_id = 123456789;
+	$date = date('YmdHis');
+	$description = $_POST["returnDate"];
+    
+    $query = "INSERT INTO request (description,user_id,equipment_id) VALUES ( '" . $description . "'," . $user_id . "," . $equipment_id . ");";
+ 
+    if ($stmt = $con->prepare($query)) {
+        $stmt->execute();
+      
+        $stmt->close();
+    }
+
+    echo "<script>alert('Request Successfully Submitted!');</script>";
+    echo "<p>Success!</p>";
+}
             ?>
             <table>
                 <?php
