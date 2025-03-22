@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="en">
     <head>
         <title>Check out</title>
         <?php
@@ -22,12 +22,12 @@
             <input type="submit">
         </form>
         <?php
-        $servername = "192.168.56.101";
+        $servername = "192.168.56.101"; // your vm's ip here
         $username = "faculty";
         $password = "P@ssw0rd";
         $db = "mydb";
 
-        $conn = new mysqli($servername, $username, $password, $db);
+        $conn = mysqli_connect($servername, $username, $password, $db);
 
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
@@ -35,7 +35,7 @@
 
         if (isset($studentID) && isset($equipmentID) && isset($duedate)) {
             $date = date("y-m-d H:i:s");
-            $result = mysql_query("INSERT INTO checkout (checkoutdate, duedate " . date("H:i:s") . ", equipment_id, user_id) VALUES ($date, $duedate, $equipmentID, $studentID);");
+            $result = $conn->query("INSERT INTO checkout (checkoutdate, duedate, equipment_id, user_id) VALUES ('$date', '$duedate " . date("H:i:s") . "', $equipmentID, $studentID)");
             if ($result) {
                 echo "<script>alert(\"Submission was successful.\");</script>";
             }
