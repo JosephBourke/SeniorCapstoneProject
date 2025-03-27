@@ -7,14 +7,13 @@
 <table>
 
 <?php
-$host="127.0.0.1";
-$port=3306;
-$socket="";
-$user="faculty";
-$password="P@ssw0rd";
-$dbname="mydb";
-$con = new mysqli($host, $user, $password, $dbname, $port, $socket)
-    or die ('Could not connect to the database server' . mysqli_connect_error());
+    $host="127.0.0.1";
+    $port=3306;
+    $socket="";
+    $user="faculty";
+    $password="P@ssw0rd";
+    $dbname="mydb";
+    $con = new mysqli($host, $user, $password, $dbname, $port, $socket) or die ('Could not connect to the database server' . mysqli_connect_error());
 
 
 
@@ -37,30 +36,20 @@ $con = new mysqli($host, $user, $password, $dbname, $port, $socket)
     }
     
 
+    // $query = "Select q.name, r.id, r.description from equipment q, request r where q.id = r.equipment_id AND r.accepted IS NULL";
+	$query = "Select q.name, r.id, r.description from equipment q, request r where q.id = r.equipment_id;";
 
 
-
-
-
-    $query = "Select q.name, r.id, r.description from equipment q, request r where q.id = r.equipment_id AND r.accepted IS NULL";
-
-
-if ($stmt = $con->prepare($query)) {
-    $stmt->execute();
-    $stmt->bind_result($name, $id, $description);
-    while ($stmt->fetch()) {
-        //printf("%s, %s, %s\n", $name, $id, $description);
-        echo "<tr><form action=\"./approve_deny_request/\" method=\"POST\"><td>".$name."</td><td>". $description."</td><td><input value=View type=submit></td><input type=hidden name=id id=id value=$id></form></tr>";
-    }
-    $stmt->close();
+    if ($stmt = $con->prepare($query)) {
+        $stmt->execute();
+        $stmt->bind_result($name, $id, $description);
+        while ($stmt->fetch()) {
+            // printf("%s, %s, %s\n", $name, $id, $description);
+            echo "<tr><form action=\"./approve_deny_request/\" method=\"POST\"><td>".$name."</td><td>". $description."</td><td><input value=View type=submit></td><input type=hidden name=id id=id value=$id></form></tr>";
+        }
+        $stmt->close();
 }
-
-
-
-
 ?>
-
-
 </table>
 
 

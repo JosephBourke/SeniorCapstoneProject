@@ -127,7 +127,7 @@
                             or die('Could not connect to the database server' . mysqli_connect_error());
                         
 
-                        /// WARNING this is some of the most cursed scrambled 
+                        /// WARNING this is some of the most cursed scrambled variable names im sorry
 
                         $query = "SELECT id, name, description FROM equipment;";
                         if ($stmt = $con->prepare($query)) {
@@ -179,7 +179,7 @@ if (isset($_POST["equipment"])) {
 	$date = date('YmdHis');
 	$description = $_POST["returnDate"];
     
-    $query = "INSERT INTO request (description,user_id,equipment_id) VALUES ( '" . $description . "'," . $user_id . "," . $equipment_id . ");";
+    $query = "INSERT INTO request (description,user_id,equipment_id) VALUES ( '" . $description . "," . $user_id . "," . $equipment_id . ");";
  
     if ($stmt = $con->prepare($query)) {
         $stmt->execute();

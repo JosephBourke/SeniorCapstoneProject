@@ -36,7 +36,7 @@
 <body>
 	<?php
 	$pickupDate = $_POST['pickupDate'];
-	$returnDate = $_POSt['returnDate'];
+	$returnDate = $_POST['returnDate'];
 	$user = $_POST['user'];
 	$equipment = $_POST['equipment'];
 
@@ -52,10 +52,13 @@
 		<table style="width:80%" class="center"><tr>
 		<?php
 		// this is currently actually equipment that is not available
-		$con = new mysqli($host, $user, $password, $dbname, $port, $socket)
+		$con = new mysqli($host, $user, $password, $dbname, $port)
 			or die('Could not connect to the database server' . mysqli_connect_error());
 		
-		$query = "SELECT e.id, e.name from equipment e, checkout c where e.id = c.equipment_id and c.checkintime is null";
+		$query = "SELECT e.id, e.name from equipment e, checkout c where e.id = c.equipment_id and c.checkintim e is null";
+		//  $query = "SELECT e.id, e.name from equipment e, checkout c where e.id = c.equipment_id;";
+		// $query = "SELECT id name FROM equipment;";
+
 		if ($stmt = $con->prepare($query)) {
 			$stmt->execute();
 			$stmt->bind_result($id, $name);
@@ -95,30 +98,25 @@
 <?php
 
 
-$equipment_id = $_POST["equipment"];
-$user_id = 1234567;
-$date = date('YmdHis');
-$description = $_POST["returnDate"];
+	// $equipment_id = $_POST["equipment"];
+	// $user_id = 123456789;
+	// $date = date('YmdHis');
+	// $description = $_POST["returnDate"];
 
-$host = "127.0.0.1";
-$port = 3306;
-$socket = "";
-$user = "faculty";
-$password = "P@ssw0rd";
-$dbname = "mydb";
+	// $con = new mysqli($host, $user, $password, $dbname, $port, $socket) or die('Could not connect to the database server' . mysqli_connect_error());
+	
+	// // This exists to so that the new request can be inserted into the database
+	// if(isset($_POST["equipment"]))
+	// {
+	// 	$query = "INSERT INTO request (description, create_time, user_id, equipment_id) VALUES (\"$description\", $date ,$user_id, $equipment_id);";
+	// 	if ($stmt = $con->prepare($query)) {
+	// 		$stmt->execute();
+	// 	}
+	// 	echo "<script>alert('Request Successfully Submitted!');</script>";
 
-$con = new mysqli($host, $user, $password, $dbname, $port, $socket) or die('Could not connect to the database server' . mysqli_connect_error());
+	// }
 
 
-if(isset($_POST["equipment"]))
-{
-
-	$query = "INSERT INTO request (description, create_time, user_id, equipment_id) VALUES (\"$description\", $date ,$user_id, $equipment_id);";
-
-	if ($stmt = $con->prepare($query)) {
-		$stmt->execute();
-	}
-}
 ?>
 
 </html>
