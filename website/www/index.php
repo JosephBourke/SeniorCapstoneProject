@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-
 <html>  
   <head>
     <title>Login</title>
@@ -103,32 +101,92 @@
     </style>
   </head>
 
+
+
+  
   <body>
+
+
+   
+
       <div class="login-page">
 
         <div class="form">
-          <form class="register-form">
-            <input type="text" placeholder="name"/>
-            <input type="password" placeholder="password"/>
-            <input type="text" placeholder="email address"/>
-            <button>create</button>
-            <p class="message">Already registered? <a href="#">Sign In</a></p>
-          </form>
-            <form class="login-form">
+            <form class="login-form" class="register-form", action="./", method="POST">
 
-            <input type="text" placeholder="username"/>
-            <input type="password" placeholder="password"/>
-            <button>login</button>
+            <input type="text", id="myusername", name="myusername", placeholder="username"/>
+            <input type="password", id="mypassword", name="mypassword", placeholder="password"/>
+            <button type="submit">login</button>
             <p class="message">Not registered? <a href="#">Create an account</a></p>
           </form>
+
         </div>
       </div>
 
+         <?php
+      // echo "<script>alert(\"AHHHHHH\");<\script>";
+      //Check if Data is sent, if so
+      //Check if Password matches
+      //If Password Matches Redirect
+      //If Password Does not Match Reload 
+
+      if(isset($_POST["mypassword"]))
+      {
+        echo "<p> Login Attempt </p>";
+        // echo "<alert type=success>Login Attempt</alert>";
+        $host="localhost";
+        $port=3306;
+        $dbuser="faculty";
+        $dbpassword="P@ssw0rd";
+        $dbname="mydb";
+
+        $con = new mysqli($host, $dbuser, $dbpassword, $dbname, $port)
+          or die ('Could not connect to the database server' . mysqli_connect_error());
+
+        $myusername = $_POST["myusername"];
+        $mypassword = $_POST["mypassword"];
+
+        $query = "SELECT username, uid, password FROM user WHERE username = '$myusername' ;";
+        
+
+        if ($stmt = $con->prepare($query)) {
+          echo "<p> SQL QUERY </p>";
+          $stmt->execute();
+          $stmt->bind_result($username, $uid, $password);
+          $stmt->fetch();
+          $stmt->close();
+        }else{
+          echo "<p> SQL ERROR</p>";
+          echo "<script> alert('error logging in.');</script>";
+        }
+
+        echo "<p> $username, $uid, $password </p>";
+
+        if(strcmp($mypassword, $password) == 0)
+        {
+          echo "<p> PASSWORD SUCCESSFUL </p>";
+          //SUCCESSFUL LOGIN
+          
+          //Setup SESSION data
+          session_start();
+          $_SESSION["userid"] = $uid;
+          //LOGIN REDIRECT TO STUDENT HOME FOR NOW
+          header('Location: ./student_home');
+          die();
+        }else{
+          echo "<p> password incorrect </p>";
+          echo "<script>alert('Password or Username Incorrect');</script>";
+        }
+        
 
 
-      <!-- <?php
-
-      echo "Hello World!";
+        $con->close();
+      }
       
-      ?> -->
+      ?>
+
+
+      
+      
+
 </body>
