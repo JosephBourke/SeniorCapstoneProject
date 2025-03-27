@@ -160,7 +160,7 @@
           echo "<script> alert('error logging in.');</script>";
         }
 
-        echo "<p> $username, $uid, $password </p>";
+        // echo "<p> $username, $uid, $password </p>";
 
         if(strcmp($mypassword, $password) == 0)
         {
