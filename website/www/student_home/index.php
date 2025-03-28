@@ -35,6 +35,11 @@
 
 <body>
 	<?php
+ 
+		$id = $_SESSION["userid"];
+		echo "<p>Hello $id</p>";
+
+
 	$pickupDate = $_POST['pickupDate'];
 	$returnDate = $_POST['returnDate'];
 	$user = $_POST['user'];
