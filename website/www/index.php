@@ -1,9 +1,9 @@
 <html>  
   <head>
+    <!-- All this is formatting stuff for the page -->
     <title>Login</title>
     <style>
   @import url(https://fonts.googleapis.com/css?family=Roboto:300);
-
   .login-page {
     width: 360px;
     padding: 8% 0 0;
@@ -108,7 +108,8 @@
 
 
    
-
+      <!-- This includes a form that will take the next variables and put them in a form -->
+      <!-- These variables are the username and password as well as a submit button. -->
       <div class="login-page">
 
         <div class="form">
@@ -130,6 +131,7 @@
       //If Password Matches Redirect
       //If Password Does not Match Reload 
 
+      //In this code, it checks if the information the user submitted matches up with what is in the system by searching in an SQL database where all the usernames and passwords are stored.
       if(isset($_POST["mypassword"]))
       {
         echo "<p> Login Attempt </p>";
@@ -148,7 +150,7 @@
 
         $query = "SELECT username, uid, password FROM user WHERE username = '$myusername' ;";
         
-
+        //What this does is prepare the SQL query and bind the results to the corresponding variables and displays an error message if it fails.
         if ($stmt = $con->prepare($query)) {
           echo "<p> SQL QUERY </p>";
           $stmt->execute();
@@ -162,6 +164,8 @@
 
         // echo "<p> $username, $uid, $password </p>";
 
+        //If these two password strings are the same, it will be a successful login and redirect the user to the appropriate screen.
+        //Or else, it will display a message saying the username and/or password is incorrect.
         if(strcmp($mypassword, $password) == 0)
         {
           echo "<p> PASSWORD SUCCESSFUL </p>";

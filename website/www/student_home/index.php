@@ -64,6 +64,8 @@
 		//  $query = "SELECT e.id, e.name from equipment e, checkout c where e.id = c.equipment_id;";
 		// $query = "SELECT id name FROM equipment;";
 
+		//This will take the name from each piece of avalable equipment seen in the database and display them accordingly.
+		//There are also option selections that will take you to the new request page when clicked.
 		if ($stmt = $con->prepare($query)) {
 			$stmt->execute();
 			$stmt->bind_result($id, $name);
@@ -80,6 +82,7 @@
 		<?php
 		//if (isset($equipment)) {
 		?>
+		<!-- This displays each piece of equipment from the database along with a button for each that takes you to the view request details page. -->
 		<table>
 			<tr>
 				<th>Equipment</th>

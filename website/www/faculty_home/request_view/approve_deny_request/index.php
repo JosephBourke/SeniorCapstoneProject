@@ -34,7 +34,8 @@ if ($stmt = $con->prepare($query)) {
     $stmt->close();
 }
 
-
+//In this code, the username of the user, the name of the corresponding equipment, and a comment with that equipment is displayed.
+//There are also two buttons that say "Accept" and "Deny" that change the value of the equipment to whether it is accepted or not (true or false).
 echo "<p>New Request From " .$username . "</p>";
 echo "<p>Requesting Camera: " .$name;
 echo "<p>Comments: " .$description;

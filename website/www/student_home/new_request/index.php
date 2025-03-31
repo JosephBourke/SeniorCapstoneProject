@@ -113,6 +113,7 @@
             <h1>New Request</h1>
             <form action="./" method="POST">
                 <label>
+                    <!-- This is a dropdown menu that allows you to to select the different kinds of equipment that is there by its name -->
                     Equipment:
                     <select name="equipment" id="equipment">
                         <option>Select a piece of Equipment</option>
@@ -147,6 +148,7 @@
                     </select>
                 </label>
                 <br><br>
+                <!-- These elements are pretty self-explainatory -->
                 <label>
                     Pickup Date:
                     <input type="date" name="pickupDate" id="pickupDate">
@@ -170,7 +172,8 @@ $dbname = "mydb";
 $con = new mysqli($host, $user, $password, $dbname, $port, $socket)
     or die('Could not connect to the database server' . mysqli_connect_error());
 
-
+//If the "equipment" section is set, it will make a new request that includes the description, user ID, and equipment ID that is then stored in the database.
+//After that, an alert pops up saying "Request Successfully Submitted!"
 if (isset($_POST["equipment"])) {
 
 

@@ -16,7 +16,8 @@
     $con = new mysqli($host, $user, $password, $dbname, $port, $socket) or die ('Could not connect to the database server' . mysqli_connect_error());
 
 
-
+    //In this code, if "accept" is set and the accept variable is equal to 1, the accepted part in request is set to 1 (true).
+    //Or else, it is set to 0 (false).
     if(isset($_POST["accept"]))
     {
         $id = $_POST["rid"];
@@ -39,7 +40,7 @@
     // $query = "Select q.name, r.id, r.description from equipment q, request r where q.id = r.equipment_id AND r.accepted IS NULL";
 	$query = "Select q.name, r.id, r.description from equipment q, request r where q.id = r.equipment_id;";
 
-
+    //Here, it displays the name and description for each equipment in the database along with a view button which takes you to the approve/deny request page.
     if ($stmt = $con->prepare($query)) {
         $stmt->execute();
         $stmt->bind_result($name, $id, $description);
