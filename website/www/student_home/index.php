@@ -10,11 +10,13 @@
 			float: left;
 		}
 
-		h2, ul {
+		h2,
+		ul {
 			text-align: center;
 		}
 
-		table, td {
+		table,
+		td {
 			border: 1px solid black;
 			border-collapse: collapse;
 		}
@@ -30,14 +32,26 @@
 			-webkit-font-smoothing: antialiased;
 			-moz-osx-font-smoothing: grayscale;
 		}
+
+		header {
+			background-color: rgb(148, 13, 13);
+			color: #fff;
+			padding: 30px;
+			text-align: center;
+			font-size: 50px;
+		}
 	</style>
 </head>
 
 <body>
+	<header>
+		<strong>Student Home</strong>
+	</header>
 	<?php
- 
-		$id = $_SESSION["userid"];
-		echo "<p>Hello $id</p>";
+
+	$id = $_SESSION["userid"];
+	// I assume this is for testing
+	echo "<p>Hello $id</p>";
 
 
 	$pickupDate = $_POST['pickupDate'];
@@ -53,28 +67,29 @@
 	$dbname = "mydb";
 	?>
 	<div class="side" id="available">
-		<h2>Available Equipment</h2> 
-		<table style="width:80%" class="center"><tr>
-		<?php
-		// this is currently actually equipment that is not available
-		$con = new mysqli($host, $user, $password, $dbname, $port)
-			or die('Could not connect to the database server' . mysqli_connect_error());
-		
-		$query = "SELECT e.id, e.name from equipment e, checkout c where e.id = c.equipment_id and c.checkintim e is null";
-		//  $query = "SELECT e.id, e.name from equipment e, checkout c where e.id = c.equipment_id;";
-		// $query = "SELECT id name FROM equipment;";
+		<h2>Available Equipment</h2>
+		<table style="width:80%" class="center">
+			<tr>
+				<?php
+				// this is currently actually equipment that is not available
+				$con = new mysqli($host, $user, $password, $dbname, $port)
+					or die('Could not connect to the database server' . mysqli_connect_error());
 
-		//This will take the name from each piece of avalable equipment seen in the database and display them accordingly.
-		//There are also option selections that will take you to the new request page when clicked.
-		if ($stmt = $con->prepare($query)) {
-			$stmt->execute();
-			$stmt->bind_result($id, $name);
-			while ($stmt->fetch()) {
-				echo "<tr><td><a href=". "new_request/index.php" .">" . $name . "</option>";
-			}
-			$stmt->close();
-		}
-		?>
+				$query = "SELECT e.id, e.name from equipment e, checkout c where e.id = c.equipment_id and c.checkintim e is null";
+				//  $query = "SELECT e.id, e.name from equipment e, checkout c where e.id = c.equipment_id;";
+				// $query = "SELECT id name FROM equipment;";
+				
+				//This will take the name from each piece of avalable equipment seen in the database and display them accordingly.
+				//There are also option selections that will take you to the new request page when clicked.
+				if ($stmt = $con->prepare($query)) {
+					$stmt->execute();
+					$stmt->bind_result($id, $name);
+					while ($stmt->fetch()) {
+						echo "<tr><td><a href=" . "new_request/index.php" . ">" . $name . "</option>";
+					}
+					$stmt->close();
+				}
+				?>
 		</table>
 	</div>
 	<div class="side" id="checkedout">
@@ -106,23 +121,23 @@
 <?php
 
 
-	// $equipment_id = $_POST["equipment"];
-	// $user_id = 123456789;
-	// $date = date('YmdHis');
-	// $description = $_POST["returnDate"];
+// $equipment_id = $_POST["equipment"];
+// $user_id = 123456789;
+// $date = date('YmdHis');
+// $description = $_POST["returnDate"];
 
-	// $con = new mysqli($host, $user, $password, $dbname, $port, $socket) or die('Could not connect to the database server' . mysqli_connect_error());
-	
-	// // This exists to so that the new request can be inserted into the database
-	// if(isset($_POST["equipment"]))
-	// {
-	// 	$query = "INSERT INTO request (description, create_time, user_id, equipment_id) VALUES (\"$description\", $date ,$user_id, $equipment_id);";
-	// 	if ($stmt = $con->prepare($query)) {
-	// 		$stmt->execute();
-	// 	}
-	// 	echo "<script>alert('Request Successfully Submitted!');</script>";
+// $con = new mysqli($host, $user, $password, $dbname, $port, $socket) or die('Could not connect to the database server' . mysqli_connect_error());
 
-	// }
+// // This exists to so that the new request can be inserted into the database
+// if(isset($_POST["equipment"]))
+// {
+// 	$query = "INSERT INTO request (description, create_time, user_id, equipment_id) VALUES (\"$description\", $date ,$user_id, $equipment_id);";
+// 	if ($stmt = $con->prepare($query)) {
+// 		$stmt->execute();
+// 	}
+// 	echo "<script>alert('Request Successfully Submitted!');</script>";
+
+// }
 
 
 ?>
