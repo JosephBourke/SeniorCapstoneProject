@@ -51,7 +51,7 @@
 
 	$id = $_SESSION["userid"];
 	// I assume this is for testing
-	echo "<p>Hello $id</p>";
+	// echo "<p>Hello $id</p>";
 
 
 	$pickupDate = $_POST['pickupDate'];
@@ -76,7 +76,7 @@
 					or die('Could not connect to the database server' . mysqli_connect_error());
 
 				$query = "SELECT e.id, e.name from equipment e, checkout c where e.id = c.equipment_id and c.checkintim e is null";
-				//  $query = "SELECT e.id, e.name from equipment e, checkout c where e.id = c.equipment_id;";
+				// $query = "SELECT e.id, e.name from equipment e, checkout c where e.id = c.equipment_id;";
 				// $query = "SELECT id name FROM equipment;";
 				
 				//This will take the name from each piece of avalable equipment seen in the database and display them accordingly.
