@@ -81,7 +81,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`user` (
   `email` VARCHAR(255) NULL DEFAULT NULL,
   `password` VARCHAR(32) NOT NULL,
   `create_time` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
-  `uid` INT NOT NULL,
+  `uid` INT NOT NULL AUTO_INCREMENT,
   `isfaculty` TINYINT NULL DEFAULT NULL,
   PRIMARY KEY (`uid`))
 ENGINE = InnoDB
@@ -94,12 +94,12 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 
 
-INSERT INTO user (username, password, uid) VALUES
-('wert1728', 'MONmon19$', 2536471),
-('gert1924', 'GIGtime21%', 4673920),
-('ghet1928', 'TALtal31&', 5261822),
-('newt1923', 'BIGsmall22#', 5362891),
-('seng1927', 'COMteach60$', 9876534);
+INSERT INTO user (username, password) VALUES
+('wert1728', 'MONmon19$'),
+('gert1924', 'GIGtime21%'),
+('ghet1928', 'TALtal31&'),
+('newt1923', 'BIGsmall22#'),
+('seng1927', 'COMteach60$');
 
 INSERT INTO request (id, create_time, description, accepted, user_id, equipment_id) 
 VALUES 

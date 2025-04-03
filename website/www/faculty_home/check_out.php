@@ -40,7 +40,7 @@
         //And then, it will produce an alert that says "Submission is successful".
         if (isset($studentID) && isset($equipmentID) && isset($duedate)) {
             $date = date("y-m-d H:i:s");
-            $result = $conn->query("INSERT INTO checkout (checkoutdate, duedate, equipment_id, user_id) VALUES ('$date', '$duedate " . date("H:i:s") . "', $equipmentID, $studentID)");
+            $result = $conn->query("INSERT INTO checkout (checkoutdate, duedate, equipmentid, studentid) VALUES ('$date', '$duedate " . date("H:i:s") . "', $equipmentID, $studentID)");
             if ($result) {
                 echo "<script>alert(\"Submission was successful.\");</script>";
             }
