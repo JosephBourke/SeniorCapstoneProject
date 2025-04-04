@@ -94,12 +94,12 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 
 
-INSERT INTO user (username, password) VALUES
-('wert1728', 'MONmon19$'),
-('gert1924', 'GIGtime21%'),
-('ghet1928', 'TALtal31&'),
-('newt1923', 'BIGsmall22#'),
-('seng1927', 'COMteach60$');
+INSERT INTO user (username, email, password) VALUES
+('Jimbo', 'wert1728', 'MONmon19$'),
+('Jeremy', 'gert1924', 'GIGtime21%'),
+('MaryFloppins', 'ghet1928', 'TALtal31&'),
+('SarahSwafford', 'newt1923', 'BIGsmall22#'),
+('HarambeShotFirst', 'seng1927', 'COMteach60$');
 
 INSERT INTO request (id, create_time, description, accepted, user_id, equipment_id) 
 VALUES 
@@ -148,8 +148,21 @@ VALUES
 (2839178, 5362891, 18, '2025-02-18 12:00:00', '2025-03-01 12:00:00'),
 (9876544, 9876534, 20, '2025-02-18 12:30:00', '2025-03-01 12:30:00');
 
-select * from checkout;
 
+
+
+
+
+Insert into checkout (studentid,equipmentid,checkoutdate,duedate) values (1,9, '2025-02-18 12:30:00', '2025-03-01 12:30:00')
+;
 Select q.name, r.id, r.description from equipment q, request r where q.id = r.equipment_id;
 
-select * from request;
+Select * from user;
+
+
+Select * from checkout;
+
+
+
+Select u.username from user u, checkout c where u.uid = c.studentid;
+select * from equipment;select * from checkout;
