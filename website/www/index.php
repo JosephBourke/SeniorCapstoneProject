@@ -50,12 +50,6 @@
       cursor: pointer;
     }
 
-    .form button:hover,
-    .form button:active,
-    .form button:focus {
-      background: #8D021F;
-    }
-
     .form .message {
       margin: 15px 0 0;
       color: #b3b3b3;
@@ -71,53 +65,13 @@
       display: none;
     }
 
-    .container {
-      position: relative;
-      z-index: 1;
-      max-width: 300px;
-      margin: 0 auto;
-    }
-
-    .container:before,
-    .container:after {
-      content: "";
-      display: block;
-      clear: both;
-    }
-
-    .container .info {
-      margin: 50px auto;
-      text-align: center;
-    }
-
-    .container .info h1 {
-      margin: 0 0 15px;
-      padding: 0;
-      font-size: 36px;
-      font-weight: 300;
-      color: #1a1a1a;
-    }
-
-    .container .info span {
-      color: #4d4d4d;
-      font-size: 12px;
-    }
-
-    .container .info span a {
-      color: #000000;
-      text-decoration: none;
-    }
-
-    .container .info span .fa {
-      color: #EF3B3A;
-    }
-
     body {
-      background: #808080;
+      background-image: url("./faculty_home/BCImage.jpg");
       font-family: "Roboto", sans-serif;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
+
   </style>
 </head>
 
@@ -194,12 +148,11 @@
       echo "<script>alert('Password or Username Incorrect');</script>";
     }
 
-
-
     $con->close();
   }
 
   ?>
 
 </body>
+
 </html>

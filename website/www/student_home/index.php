@@ -3,7 +3,7 @@
 <html>
 
 <head>
-	<title>Home</title>
+	<title>Student Home</title>
 	<style>
 		.side {
 			width: 50%;
