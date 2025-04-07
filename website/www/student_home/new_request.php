@@ -5,7 +5,7 @@
 <head>
     <title>New Request</title>
     <style>
-        @import url(https://fonts.googleapis.com/css?family=Roboto:300);
+        @import url(https:#fonts.googleapis.com/css?family=Roboto:300);
 
         .login-page {
             width: 360px;
@@ -128,16 +128,16 @@
                             or die('Could not connect to the database server' . mysqli_connect_error());
                         
 
-                        /// WARNING this is some of the most cursed scrambled variable names im sorry
+                        # WARNING this is some of the most cursed scrambled variable names im sorry
 
                         $query = "SELECT id, name, description FROM equipment;";
                         if ($stmt = $con->prepare($query)) {
                             $stmt->execute();
                             $stmt->bind_result($id, $name, $description);
                             while ($stmt->fetch()) {
-                                //printf("%s, %s, %s\n", $id, $name, $description);
+                                # printf("%s, %s, %s\n", $id, $name, $description);
                                 echo "<option value=" . $id . ">" . $name . "</option>";
-                                // echo "<li><a href=\"new_request/index.html\">".$name."</a></li>";
+                                # echo "<li><a href=\"new_request/index.html\">".$name."</a></li>";
                             }
                             $stmt->close();
                         }
@@ -172,8 +172,8 @@ $dbname = "mydb";
 $con = new mysqli($host, $user, $password, $dbname, $port, $socket)
     or die('Could not connect to the database server' . mysqli_connect_error());
 
-//If the "equipment" section is set, it will make a new request that includes the description, user ID, and equipment ID that is then stored in the database.
-//After that, an alert pops up saying "Request Successfully Submitted!"
+# If the "equipment" section is set, it will make a new request that includes the description, user ID, and equipment ID that is then stored in the database.
+# After that, an alert pops up saying "Request Successfully Submitted!"
 if (isset($_POST["equipment"])) {
 
 
@@ -196,26 +196,26 @@ if (isset($_POST["equipment"])) {
             ?>
             <table>
                 <?php
-                // $host="127.0.0.1";
-                // $port=3306;
-                // $socket="";
-                // $user="faculty";
-                // $password="";
-                // $dbname="mydb";
-                // $con = new mysqli($host, $user, $password, $dbname, $port, $socket)
-                //     or die ('Could not connect to the database server' . mysqli_connect_error());
-                // $query = "SELECT id, create_time,description,accepted,user_id, equipment_id FROM request";
+                # $host="127.0.0.1";
+                # $port=3306;
+                # $socket="";
+                # $user="faculty";
+                # $password="";
+                # $dbname="mydb";
+                # $con = new mysqli($host, $user, $password, $dbname, $port, $socket)
+                #     or die ('Could not connect to the database server' . mysqli_connect_error());
+                # $query = "SELECT id, create_time,description,accepted,user_id, equipment_id FROM request";
                 
-                // if ($stmt = $con->prepare($query)) {
-                //     $stmt->execute();
-                //     $stmt->bind_result($id, $create_time, $description, $accepted, $user_id, $equipment_id);
-                //     while ($stmt->fetch()) {
-                //         //printf("%s, %s, %s, %s, %s, %s\n", $id, $create_time, $description, $accepted, $user_id, $equipment_id);
-                //         echo "<tr><td>".$id."</td><td>". $create_time."</td><td>". $description."</td><td>". $accepted."</td><td>". $user_id."</td><td>". $equipment_id."</td></tr>";
-                //     }
-                //     $stmt->close();
-                // }
-                // $con->close();
+                # if ($stmt = $con->prepare($query)) {
+                #     $stmt->execute();
+                #     $stmt->bind_result($id, $create_time, $description, $accepted, $user_id, $equipment_id);
+                #     while ($stmt->fetch()) {
+                #         # printf("%s, %s, %s, %s, %s, %s\n", $id, $create_time, $description, $accepted, $user_id, $equipment_id);
+                #         echo "<tr><td>".$id."</td><td>". $create_time."</td><td>". $description."</td><td>". $accepted."</td><td>". $user_id."</td><td>". $equipment_id."</td></tr>";
+                #     }
+                #     $stmt->close();
+                # }
+                # $con->close();
                 ?>
             </table>
         </div>
