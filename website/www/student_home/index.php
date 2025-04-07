@@ -27,7 +27,8 @@
 		}
 
 		body {
-			background: rgb(244, 243, 243);
+			/* background: rgb(244, 243, 243); */
+			background: url("./../faculty_home/BCImage.jpg");
 			font-family: "Roboto", sans-serif;
 			-webkit-font-smoothing: antialiased;
 			-moz-osx-font-smoothing: grayscale;
