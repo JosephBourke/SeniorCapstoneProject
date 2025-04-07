@@ -1,5 +1,11 @@
 Results of the codebase refactor:
 
+The directory structure for the website has been changed, there are now only two folders
+for web pages under the www folder: faculty_home and student_home. Any additional pages
+for the faculty will go in the faculty_home folder with a name that describes the purpose
+of the page. Any additional pages for the student will go in the student_home folder with
+a name that describes the purpose of the page.
+
 All future changes to the css will go in the stylesheets.css file kept in the css folder.
 Only if there is a specific change to be made to exactly one of the web pages that needs
 to override an existing css feature in the stylesheet.css file will you put css inside of
