@@ -64,7 +64,7 @@
       $con = new mysqli($host, $user, $password, $dbname, $port)
         or die('Could not connect to the database server' . mysqli_connect_error());
 
-
+      //If the email part is set, it will collect a bunch of information related to that email.
       if (isset($_POST["email"])) {
 
         $email = $_POST["email"];
@@ -76,6 +76,8 @@
           $iter = 0;
           while ($stmt->fetch()) {
 
+            //If the iter variable is 0, your username and user ID will print out.
+            //Afterwards, it willl print out name, checkout date, and due date along with a submit button and a hidden cid value.
             if ($iter === 0) {
               echo "<tr><th>$username</th><th>$uid</th></tr>";
             }
@@ -96,7 +98,7 @@
 
 
 
-
+      //If hidden is set, the checkin date on the checkout table will be updated to what is now where id is equal to the hidden variable.
       if (isset($_POST["hidden"])) {
         $hidden = $_POST["hidden"];
         // UPDATE statement not working 
@@ -105,6 +107,7 @@
         $stmt = $con->prepare($query);
         $stmt->execute();
 
+        //After that, an alert is printed.
         echo "<script>alert(\"Submission was successful.\");</script>";
         $stmt->close();
       }
