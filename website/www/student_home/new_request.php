@@ -126,10 +126,10 @@
                         $dbname = "mydb";
                         $con = new mysqli($host, $user, $password, $dbname, $port, $socket)
                             or die('Could not connect to the database server' . mysqli_connect_error());
-                        
+
 
                         # WARNING this is some of the most cursed scrambled variable names im sorry
-
+                        
                         $query = "SELECT id, name, description FROM equipment;";
                         if ($stmt = $con->prepare($query)) {
                             $stmt->execute();
@@ -141,8 +141,8 @@
                             }
                             $stmt->close();
                         }
-                        
-                        
+
+
                         $con->close();
                         ?>
                     </select>
@@ -163,36 +163,34 @@
             </form>
             <?php
 
-$host = "127.0.0.1";
-$port = 3306;
-$socket = "";
-$user = "faculty";
-$password = "P@ssw0rd";
-$dbname = "mydb";
-$con = new mysqli($host, $user, $password, $dbname, $port, $socket)
-    or die('Could not connect to the database server' . mysqli_connect_error());
+            $host = "127.0.0.1";
+            $port = 3306;
+            $socket = "";
+            $user = "faculty";
+            $password = "P@ssw0rd";
+            $dbname = "mydb";
+            $con = new mysqli($host, $user, $password, $dbname, $port, $socket)
+                or die('Could not connect to the database server' . mysqli_connect_error());
 
-# If the "equipment" section is set, it will make a new request that includes the description, user ID, and equipment ID that is then stored in the database.
+            # If the "equipment" section is set, it will make a new request that includes the description, user ID, and equipment ID that is then stored in the database.
 # After that, an alert pops up saying "Request Successfully Submitted!"
-if (isset($_POST["equipment"])) {
+            if (isset($_POST["equipment"])) {
+                $equipment_id = $_POST["equipment"];
+                $user_id = 123456789;
+                $date = date('YmdHis');
+                $description = $_POST["returnDate"];
 
+                $query = "INSERT INTO request (description,user_id,equipment_id) VALUES ( '" . $description . "," . $user_id . "," . $equipment_id . ");";
 
-	$equipment_id = $_POST["equipment"];
-	$user_id = 123456789;
-	$date = date('YmdHis');
-	$description = $_POST["returnDate"];
-    
-    $query = "INSERT INTO request (description,user_id,equipment_id) VALUES ( '" . $description . "," . $user_id . "," . $equipment_id . ");";
- 
-    if ($stmt = $con->prepare($query)) {
-        $stmt->execute();
-      
-        $stmt->close();
-    }
+                if ($stmt = $con->prepare($query)) {
+                    $stmt->execute();
 
-    echo "<script>alert('Request Successfully Submitted!');</script>";
-    echo "<p>Success!</p>";
-}
+                    $stmt->close();
+                }
+
+                echo "<script>alert('Request Successfully Submitted!');</script>";
+                echo "<p>Success!</p>";
+            }
             ?>
             <table>
                 <?php
