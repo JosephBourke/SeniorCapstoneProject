@@ -14,7 +14,7 @@
     }
 
     body {
-      /* background-image: url("./../BCImage.jpg"); */
+      /* background-image: url("./../../images/BCImage.jpg"); */
       font-family: "Roboto", sans-serif;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
