@@ -14,18 +14,14 @@
 	</header>
 
 	<div class="searchDiv">
-
 		<form name="search" id="search" action="check_in.php" method="post">
 			<strong>Student email: </strong><input type="text" name="email" id="email">
 			<input type="submit" value="Search">
 		</form>
 	</div>
 
-	<div class="search-wrapper">
 		<table style="width:80%" class="center">
 			<?php
-
-
 			$host = "127.0.0.1"; # change this to match the ip address for your virtual machine
 			$port = 3306;
 			$user = "faculty";
@@ -85,8 +81,6 @@
 			}
 			?>
 		</table>
-
-	</div>
 
 </body>
 
