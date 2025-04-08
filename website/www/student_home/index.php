@@ -4,43 +4,9 @@
 
 <head>
 	<title>Student Home</title>
+	<link href="../css/stylesheet.css" type="text/css" rel="stylesheet" />
 	<style>
-		.side {
-			width: 50%;
-			float: left;
-		}
-
-		h2,
-		ul {
-			text-align: center;
-		}
-
-		table,
-		td {
-			border: 1px solid black;
-			border-collapse: collapse;
-		}
-
-		table.center {
-			margin-left: auto;
-			margin-right: auto;
-		}
-
-		body {
-			/* background: rgb(244, 243, 243); */
-			background: url("./../faculty_home/BCImage.jpg");
-			font-family: "Roboto", sans-serif;
-			-webkit-font-smoothing: antialiased;
-			-moz-osx-font-smoothing: grayscale;
-		}
-
-		header {
-			background-color: rgb(148, 13, 13);
-			color: #fff;
-			padding: 30px;
-			text-align: center;
-			font-size: 50px;
-		}
+		
 	</style>
 </head>
 
@@ -51,8 +17,8 @@
 	<?php
 
 	$id = $_SESSION["userid"];
-	// I assume this is for testing
-	// echo "<p>Hello $id</p>";
+	# I assume this is for testing
+	# echo "<p>Hello $id</p>";
 
 
 	$pickupDate = $_POST['pickupDate'];
@@ -72,16 +38,16 @@
 		<table style="width:80%" class="center">
 			<tr>
 				<?php
-				// this is currently actually equipment that is not available
+				# this is currently actually equipment that is not available
 				$con = new mysqli($host, $user, $password, $dbname, $port)
 					or die('Could not connect to the database server' . mysqli_connect_error());
 
 				$query = "SELECT e.id, e.name from equipment e, checkout c where e.id = c.equipment_id and c.checkintim e is null";
-				// $query = "SELECT e.id, e.name from equipment e, checkout c where e.id = c.equipment_id;";
-				// $query = "SELECT id name FROM equipment;";
+				# $query = "SELECT e.id, e.name from equipment e, checkout c where e.id = c.equipment_id;";
+				# $query = "SELECT id name FROM equipment;";
 				
-				//This will take the name from each piece of avalable equipment seen in the database and display them accordingly.
-				//There are also option selections that will take you to the new request page when clicked.
+				# This will take the name from each piece of avalable equipment seen in the database and display them accordingly.
+				# There are also option selections that will take you to the new request page when clicked.
 				if ($stmt = $con->prepare($query)) {
 					$stmt->execute();
 					$stmt->bind_result($id, $name);
@@ -96,7 +62,7 @@
 	<div class="side" id="checkedout">
 		<h2>Checked Out Equipment</h2>
 		<?php
-		//if (isset($equipment)) {
+		# if (isset($equipment)) {
 		?>
 		<!-- This displays each piece of equipment from the database along with a button for each that takes you to the view request details page. -->
 		<table>
@@ -111,7 +77,7 @@
 			<tr></tr>
 		</table>
 		<?php
-		//}
+		# }
 		
 		?>
 	</div>
@@ -122,23 +88,23 @@
 <?php
 
 
-// $equipment_id = $_POST["equipment"];
-// $user_id = 123456789;
-// $date = date('YmdHis');
-// $description = $_POST["returnDate"];
+# $equipment_id = $_POST["equipment"];
+# $user_id = 123456789;
+# $date = date('YmdHis');
+# $description = $_POST["returnDate"];
 
-// $con = new mysqli($host, $user, $password, $dbname, $port, $socket) or die('Could not connect to the database server' . mysqli_connect_error());
+# $con = new mysqli($host, $user, $password, $dbname, $port, $socket) or die('Could not connect to the database server' . mysqli_connect_error());
 
-// // This exists to so that the new request can be inserted into the database
-// if(isset($_POST["equipment"]))
-// {
-// 	$query = "INSERT INTO request (description, create_time, user_id, equipment_id) VALUES (\"$description\", $date ,$user_id, $equipment_id);";
-// 	if ($stmt = $con->prepare($query)) {
-// 		$stmt->execute();
-// 	}
-// 	echo "<script>alert('Request Successfully Submitted!');</script>";
+# # This exists to so that the new request can be inserted into the database
+# if(isset($_POST["equipment"]))
+# {
+# 	$query = "INSERT INTO request (description, create_time, user_id, equipment_id) VALUES (\"$description\", $date ,$user_id, $equipment_id);";
+# 	if ($stmt = $con->prepare($query)) {
+# 		$stmt->execute();
+# 	}
+# 	echo "<script>alert('Request Successfully Submitted!');</script>";
 
-// }
+# }
 
 
 ?>

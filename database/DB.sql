@@ -11,19 +11,21 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- Schema mydb
 -- -----------------------------------------------------
 DROP SCHEMA IF EXISTS `mydb` ;
+DROP SCHEMA IF EXISTS `MariaSQL` ;
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema MariaSQL
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8mb3 ;
-USE `mydb` ;
+CREATE SCHEMA IF NOT EXISTS `MariaSQL` DEFAULT CHARACTER SET utf8mb3 ;
+USE `MariaSQL` ;
 
 -- -----------------------------------------------------
--- Table `mydb`.`checkout`
+-- Table `MariaSQL`.`checkout`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `mydb`.`checkout` ;
+DROP TABLE IF EXISTS `MariaSQL`.`checkout` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`checkout` (
+CREATE TABLE IF NOT EXISTS `MariaSQL`.`checkout` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `studentid` INT NOT NULL,
   `equipmentid` INT NOT NULL,
@@ -36,11 +38,12 @@ DEFAULT CHARACTER SET = utf8mb3;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`equipment`
+-- Table `MariaSQL`.`equipment`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `mydb`.`equipment` ;
+DROP TABLE IF EXISTS `MariaSQL`.`equipment` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`equipment` (
+CREATE TABLE IF NOT EXISTS `MariaSQL`.`equipment` (
   `id` INT NOT NULL,
   `barcode` INT NULL DEFAULT NULL,
   `name` VARCHAR(45) NULL DEFAULT NULL,
@@ -53,11 +56,12 @@ DEFAULT CHARACTER SET = utf8mb3;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`request`
+-- Table `MariaSQL`.`request`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `mydb`.`request` ;
+DROP TABLE IF EXISTS `MariaSQL`.`request` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`request` (
+CREATE TABLE IF NOT EXISTS `MariaSQL`.`request` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `create_time` TIMESTAMP NULL DEFAULT NULL,
   `description` LONGTEXT NULL DEFAULT NULL,
@@ -72,11 +76,12 @@ DEFAULT CHARACTER SET = utf8mb3;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`user`
+-- Table `MariaSQL`.`user`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `mydb`.`user` ;
+DROP TABLE IF EXISTS `MariaSQL`.`user` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`user` (
+CREATE TABLE IF NOT EXISTS `MariaSQL`.`user` (
   `username` VARCHAR(16) NOT NULL,
   `email` VARCHAR(255) NULL DEFAULT NULL,
   `password` VARCHAR(32) NOT NULL,
@@ -109,34 +114,34 @@ VALUES
 (2839178, '2025-02-18 12:00:00', 'Request for insanely expensive camera.', 0, 5362891, 18),
 (9876544, '2025-02-18 12:30:00', 'Request for super cheap camera.', 1, 9876534, 20);
 
-INSERT INTO `mydb`.`user` (username, email, password, create_time, uid, isfaculty) 
+INSERT INTO `MariaSQL`.`user` (username, email, password, create_time, uid, isfaculty) 
 VALUES ('steve', 'jone1456@ravens.benedictine.edu', 'MONmon19$', '2025-03-24', 1234567, false);
 
-INSERT INTO `mydb`.`user` (username, email, password, create_time, uid, isfaculty)  
+INSERT INTO `MariaSQL`.`user` (username, email, password, create_time, uid, isfaculty)  
 VALUES ('alyssa', 'alex3142@ravens.benedictine.edu', 'GIGtime21%', '2025-04-18', 5261627, false);
 
-INSERT INTO `mydb`.`user` (username, email, password, create_time, uid, isfaculty) 
+INSERT INTO `MariaSQL`.`user` (username, email, password, create_time, uid, isfaculty) 
 VALUES ('alexis', 'morg5261@ravens.benedictine.edu', 'TALtal31&', '2025-04-25', 4567283, true);
 
-INSERT INTO `mydb`.`user` (username, email, password, create_time, uid, isfaculty) 
+INSERT INTO `MariaSQL`.`user` (username, email, password, create_time, uid, isfaculty) 
 VALUES ('alex', 'safe1627@ravens.benedictine.edu', 'BIGsmall22#', '2025-05-01', 2563764, false);
 
-INSERT INTO `mydb`.`user` (username, email, password, create_time, uid, isfaculty)  
+INSERT INTO `MariaSQL`.`user` (username, email, password, create_time, uid, isfaculty)  
 VALUES ('donald', 'jack2839@ravens.benedictine.edu', 'COMteach60$', '2025-05-11', 9876543, true);
 
-INSERT INTO `mydb`.`equipment` (id, barcode, name, description) 
+INSERT INTO `MariaSQL`.`equipment` (id, barcode, name, description) 
 VALUES (12, 123456789, 'Big Camera', 'This camera is really big.');
 
-INSERT INTO `mydb`.`equipment` (id, barcode, name, description)  
+INSERT INTO `MariaSQL`.`equipment` (id, barcode, name, description)  
 VALUES (15, 782345267, 'Small Camera', 'This camera is really small.');
 
-INSERT INTO `mydb`.`equipment` (id, barcode, name, description)  
+INSERT INTO `MariaSQL`.`equipment` (id, barcode, name, description)  
 VALUES (9, 829151727, 'VIP Camera', 'This camera is really special.');
 
-INSERT INTO `mydb`.`equipment` (id, barcode, name, description) 
+INSERT INTO `MariaSQL`.`equipment` (id, barcode, name, description) 
 VALUES (18, 354866545, 'Average Camera', 'This camera is really average.');
 
-INSERT INTO `mydb`.`equipment` (id, barcode, name, description) 
+INSERT INTO `MariaSQL`.`equipment` (id, barcode, name, description) 
 VALUES (20, 345679284, 'Complex Camera', 'This camera is really complex.');
 select * from request;
 INSERT INTO checkout
