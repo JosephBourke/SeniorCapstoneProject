@@ -33,7 +33,7 @@
 
     $con = new mysqli($host, $user, $password, $dbname, $port, $socket) or die('Could not connect to the database server' . mysqli_connect_error());
 
-
+    # If the equipment is set, the data in the description, create_time, user_time, and equipment_id values are inserted into the request table.
     if (isset($_POST["equipment"])) {
 
         $query = "INSERT INTO request (description, create_time, user_id, equipment_id) VALUES (\"$description\", $date ,$user_id, $equipment_id);";
