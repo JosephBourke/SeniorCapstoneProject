@@ -48,7 +48,7 @@
 					$stmt->execute();
 					$stmt->bind_result($name,$id);
 					while ($stmt->fetch()) {
-						echo "<tr><td><a href=" . "./new_request.php" . ">" . $name . "</option>";
+						echo "<tr><td>". $name . "</td><td><form action='./new_request.php' method='POST'><input type='hidden' value='$id'> <input type='submit' value='Request Item'></form></td> </tr>";
 					}
 					$stmt->close();
 				}
@@ -80,8 +80,13 @@
 		
 		?>
 	</div>
+
+
 </body>
 
+
+
+				
 
 
 <?php

@@ -105,14 +105,14 @@
 
 		$myusername = $_POST["myusername"];
 		$mypassword = $_POST["mypassword"];
-
-		$query = "SELECT username, uid, password FROM user WHERE username = '$myusername' ;";
+		$isfaculty = 0;
+		$query = "SELECT username, uid, password, isfaculty FROM user WHERE username = '$myusername' ;";
 
 		# What this does is prepare the SQL query and bind the results to the corresponding variables and displays an error message if it fails.
 		if ($stmt = $con->prepare($query)) {
 			echo "<p> SQL QUERY </p>";
 			$stmt->execute();
-			$stmt->bind_result($username, $uid, $password);
+			$stmt->bind_result($username, $uid, $password, $isfaculty);
 			$stmt->fetch();
 			$stmt->close();
 		} else {
@@ -133,7 +133,13 @@
 			$_SESSION["userid"] = $uid;
 
 			# LOGIN REDIRECT TO STUDENT HOME FOR NOW
-			header('Location: ./student_home');
+			if($isfaculty === 1	) {
+				header('Location: ./faculty_home');
+			} else {
+				header('Location: ./student_home');
+			}
+			
+			
 			$con->close();
 			die();
 		
