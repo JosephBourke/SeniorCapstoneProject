@@ -118,6 +118,7 @@
                     <select name="equipment" id="equipment">
                         <option>Select a piece of Equipment</option>
                         <?php
+
                         $host = "127.0.0.1";
                         $port = 3306;
                         $socket = "";
@@ -162,7 +163,8 @@
                 <!-- <button>Submit</button> -->
             </form>
             <?php
-
+            session_start();
+            
             $host = "127.0.0.1";
             $port = 3306;
             $socket = "";
@@ -170,13 +172,13 @@
             $password = "P@ssw0rd";
             $dbname = "mydb";
             $con = new mysqli($host, $user, $password, $dbname, $port, $socket)
-                or die('Could not connect to the database server' . mysqli_connect_error());
-
+            or die('Could not connect to the database server' . mysqli_connect_error());
+            
             # If the "equipment" section is set, it will make a new request that includes the description, user ID, and equipment ID that is then stored in the database.
-# After that, an alert pops up saying "Request Successfully Submitted!"
+            # After that, an alert pops up saying "Request Successfully Submitted!"
             if (isset($_POST["equipment"])) {
                 $equipment_id = $_POST["equipment"];
-                $user_id = 123456789;
+                $user_id = $_SESSION["userid"];
                 $date = date('YmdHis');
                 $description = $_POST["returnDate"];
 
