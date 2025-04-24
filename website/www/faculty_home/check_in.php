@@ -15,7 +15,7 @@
 
 	<div class="searchDiv">
 		<form name="search" id="search" action="check_in.php" method="post">
-			<strong>Student email: </strong><input type="text" name="email" id="email">
+			<strong>Scan Barcode: </strong><input type="text" name="barcode" id="barcode">
 			<input type="submit" value="Search">
 		</form>
 	</div>
@@ -33,14 +33,14 @@
 				or die('Could not connect to the database server' . mysqli_connect_error());
 
 
-			# If the email part is set, it will collect a bunch of information related to that email.
-			if (isset($_POST["email"])) {
+			# If the barcode part is set, it will collect a bunch of information related to that barcode.
+			if (isset($_POST["barcode"])) {
 
-				$email = $_POST["email"];
+				$barcode = $_POST["barcode"];
 				$query = <<<MySQL_Query
 						SELECT u.uid, u.username, c.equipmentid, c.checkoutdate, c.duedate, c.id, e.name 
 						FROM user u, checkout c, equipment e 
-						WHERE u.email = '$email' AND u.uid = c.studentid AND c.equipmentid = e.id AND c.checkindate IS NULL
+						WHERE e.barcode = $barcode AND c.equipmentid = e.id AND u.uid = c.studentid AND c.checkindate IS NULL
 						MySQL_Query;
 				if ($stmt = $con->prepare($query)) {
 					$stmt->execute();

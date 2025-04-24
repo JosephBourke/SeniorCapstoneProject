@@ -15,47 +15,46 @@
 		<strong>Student Home</strong>
 	</header>
 	<?php
+	session_start();
+	$userid = $_SESSION["userid"];
 
-	$id = $_SESSION["userid"];
-	# I assume this is for testing
-	# echo "<p>Hello $id</p>";
+	$isworking = $_SESSION["userid"];
 
-
-	$pickupDate = $_POST['pickupDate'];
-	$returnDate = $_POST['returnDate'];
-	$user = $_POST['user'];
-	$equipment = $_POST['equipment'];
-
+	echo "<p>".$isworking."</p>";
+	
 	$host = "127.0.0.1";
 	$port = 3306;
-	$socket = "";
 	$user = "faculty";
 	$password = "P@ssw0rd";
-	$dbname = "mydb";
+	$dbname = "MariaSQL";
 	?>
 	<div class="side" id="available">
 		<h2>Available Equipment</h2>
 		<table style="width:80%" class="center">
 			<tr>
+
 				<?php
 				# this is currently actually equipment that is not available
 				$con = new mysqli($host, $user, $password, $dbname, $port)
 					or die('Could not connect to the database server' . mysqli_connect_error());
 
-				$query = "SELECT e.id, e.name from equipment e, checkout c where e.id = c.equipment_id and c.checkintim e is null";
+				# $query = "SELECT e.id, e.name from equipment e, checkout c where e.id = c.equipment_id and c.checkintim e is null";
 				# $query = "SELECT e.id, e.name from equipment e, checkout c where e.id = c.equipment_id;";
-				# $query = "SELECT id name FROM equipment;";
+				$query = "SELECT name, id FROM equipment;";
 				
 				# This will take the name from each piece of avalable equipment seen in the database and display them accordingly.
 				# There are also option selections that will take you to the new request page when clicked.
 				if ($stmt = $con->prepare($query)) {
 					$stmt->execute();
-					$stmt->bind_result($id, $name);
+					$stmt->bind_result($name,$id);
 					while ($stmt->fetch()) {
-						echo "<tr><td><a href=" . "new_request/index.php" . ">" . $name . "</option>";
+						echo "<tr><td>". $name . "</td><td><form action='./new_request.php' method='POST'><input type='hidden' value='$id'> <input type='submit' value='Request Item'></form></td> </tr>";
 					}
 					$stmt->close();
 				}
+
+
+
 				?>
 		</table>
 	</div>
@@ -81,8 +80,13 @@
 		
 		?>
 	</div>
+
+
 </body>
 
+
+
+				
 
 
 <?php
