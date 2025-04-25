@@ -1,5 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
+/* general header for most pages */
 header {
     background-color: rgb(148, 13, 13);
     color: #fff;
@@ -8,6 +9,7 @@ header {
     font-size: 50px;
 }
 
+/* general body for most pages */
 body {
     background-image: url("../images/BCImage.jpg");
     font-family: "Roboto", sans-serif;
@@ -15,13 +17,14 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-.flex-container {
+/* flex container used for faculty_home > index.html */
+div.flex-container {
     display: flex;
     flex-wrap: wrap;
     align-content: center;
 }
 
-.flex-container>div {
+div.flex-container>div {
     background-color: lightgrey;
     width: 225px;
     height: 10px;
@@ -34,13 +37,18 @@ a {
     color: black;
 }
 
-.searchDiv {
-    text-align: center;
-    height: 10px;
+/* for check_in.php*/
+/* does not work properly called from here */
+div.search {
+    position: relative;
+    top: 150px;
+    z-index: 1;
+    background: lightgrey;
+    max-width: 350px;
+    margin: 0 auto 100px;
     padding: 20px;
-    margin: 20px;
-    margin-top: 200px;
-    background-color: rgb(211, 211, 211);
+    /* padding-bottom: 30px; */
+    text-align: center;
 }
 
 .side {
@@ -86,4 +94,24 @@ table th {
     padding-bottom: 12px;
     text-align: left;
     /* color: white; */
+}
+
+
+/* for check_out.php  */
+/* this doesn't work which is why it is copied here from php file
+I assume the issue has to due with the fact they're class names */
+div>.checkOut {
+    position: relative;
+    top: 50px;
+    z-index: 1;
+    background: #FFFFFF;
+    max-width: 250px;
+    margin: 0 auto 100px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+div.checkOutContainer {
+    padding: 8px;
 }

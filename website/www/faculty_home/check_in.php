@@ -7,15 +7,16 @@
 	<link href="../css/stylesheet.css" type="text/css" rel="stylesheet" />
 
 	<style>
-		.searchDiv {
-			text-align: center;
-			height: 10px;
+		div.search {
+			position: relative;
+			top: 150px;
+			z-index: 1;
+			background: lightgrey;
+			max-width: 350px;
+			margin: 0 auto 100px;
 			padding: 20px;
-			margin-top: 200px;
-			margin-right: 0px;
-			margin-left: 20px;
-			margin-bottom: 20px;
-			background-color: lightgrey;
+			/* padding-bottom: 25px; */
+			text-align: center;
 		}
 	</style>
 </head>
@@ -25,11 +26,11 @@
 		<strong>Check In</strong>
 	</header>
 
-	<div class="searchDiv">
-			<form name="search" id="search" action="check_in.php" method="post">
-				<strong>Scan Barcode: </strong><input type="text" name="barcode" id="barcode">
-				<input type="submit" value="Search">
-			</form>
+	<div class="search">
+		<form name="search" id="search" action="check_in.php" method="post">
+			<strong>Scan Barcode: </strong><input type="text" name="barcode" id="barcode">
+			<input type="submit" value="Search">
+		</form>
 	</div>
 
 	<table style="width:80%" class="center">
@@ -43,7 +44,6 @@
 		# this is currently actually equipment that is not available
 		$con = new mysqli($host, $user, $password, $dbname, $port)
 			or die('Could not connect to the database server' . mysqli_connect_error());
-
 
 		# If the barcode part is set, it will collect a bunch of information related to that barcode.
 		if (isset($_POST["barcode"])) {
@@ -93,7 +93,6 @@
 		}
 		?>
 	</table>
-
 </body>
 
 </html>
